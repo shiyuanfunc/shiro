@@ -36,6 +36,7 @@ public class SecurityController extends BaseController
         try
         {
             ShiroToken token = new ShiroToken("admin", "21232f297a57a5a743894a0e4a801fc3");
+
             token.setRememberMe(false);
             SecurityUtils.getSubject().login(token);
             ShiroToken token2 = (ShiroToken) SecurityUtils.getSubject().getPrincipal();
@@ -54,6 +55,8 @@ public class SecurityController extends BaseController
             {
                 url = savedRequest.getRequestUrl();
             }
+
+            System.out.println("---------"+url+"-----"+request.getRequestURI());
             // 跳转地址
             resultMap.put("back_url", url);
         }
